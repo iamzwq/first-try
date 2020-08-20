@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>dong</title>
+  <style>
+    #app {
+      white-space: pre;
+    }
+  </style>
+</head>
+<body>
+  <style id="style"></style>
+  <div id="app"></div>
+</body>
+<script>
+  let app = document.getElementById('app')
+  let style = document.getElementById('style')
+  var code = `
+  /* 首先给所有元素加上过渡效果 */
+  * {
+    transition: all .3s;
+  }
+  /* 白色背景太单调了，我们来点背景 */
+  html {
+    color: rgb(222,222,222); background: rgb(0,43,54);
+  }
+  /* 文字离边框太近了 */
+  #app {
+    padding: .5em;
+    border: 1px solid;
+    margin: .5em;
+    overflow: auto;
+    width: 45vw; height: 90vh;
+  }
+  /* 加点 3D 效果呗 */
+  html{
+    perspective: 1000px;
+  }
+  #app {
+    position: fixed; left: 0; top: 0;
+    -webkit-transition: none;
+    transition: none;
+    -webkit-transform: rotateY(10deg) translateZ(-100px) ;
+    transform: rotateY(10deg) translateZ(-100px) ;
+  }
+  `
+  var n = 0
+  const timer = setInterval(function() {
+    app.innerHTML = code.substring(0, n)
+    style.innerHTML = code.substring(0, n)
+    n += 1
+    if (n > code.length) {
+      clearInterval(timer)
+    }
+  }, 50)
+</script>
+</html>
+
