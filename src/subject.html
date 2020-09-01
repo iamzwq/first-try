@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    class Subject {
+      observers = []
+    
+      addObserver (observer) {
+        this.observers.push(observer)
+      }
+    
+      removeObserver (observer) {
+        let index = this.observers.indexOf(observer)
+        if (index > -1) {
+          this.observers.splice(index, 1)
+        }
+      }
+    
+      notify () {
+        console.log(this.observers)
+        this.observers.forEach(observer => {
+          observer.update()
+        })
+      }
+    }
+    
+    class Observer {
+      update () {}
+    
+      subscribeTo (Subject) {
+        Subject.addObserver(this)
+      }
+    }
+    
+    let subject = new Subject()
+    let observer = new Observer()
+    
+    observer.update = function () {
+      console.log('observer update')
+    }
+    observer.subscribeTo(subject)
+    subject.notify()
+  </script>
+</body>
+</html>
+
