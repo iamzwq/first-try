@@ -23,7 +23,6 @@
       }
     
       notify () {
-        console.log(this.observers)
         this.observers.forEach(observer => {
           observer.update()
         })
