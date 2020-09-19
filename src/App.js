@@ -1,8 +1,12 @@
 import React, { PureComponent } from 'react';
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom'
+import { getRes } from './utils'
 
 export default class App extends PureComponent {
-  
+  componentDidMount () {
+    getRes()
+  }
+
   render () {
     return (
       <Router>
