@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+    body {
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background-color: #a2ade7;
+    }
+    .switch {
+      position: relative;
+    }
+    .switch input{
+      display: none;
+    }
+    .switch::before {
+      position: absolute;
+      left: 0;
+      top: 0;
+      content: '';
+      width: 60px;
+      height: 32px;
+      background-color: white;
+      border-radius: 16px;
+      cursor: pointer;
+    }
+    input + .line::before,
+    input + .line::after {
+      position: absolute;
+      top: 14px;
+      content: '';
+      width: 24px;
+      height: 4px;
+      background-color: #d3d4ec;
+      transition: .3s;
+      cursor: pointer;
+    }
+    input + .line::before {
+      left: 4px;
+      transform: scaleX(0);
+      transform-origin: left;
+    }
+    input + .line::after {
+      left: 32px;
+      transform: scaleX(1);
+      transform-origin: right;
+    }
+    input:checked + .line::before {
+      transform: scaleX(1);
+    }
+    input:checked + .line::after {
+      transform: scaleX(0);
+    }
+    input + .line span::before {
+      position: absolute;
+      top: 4px;
+      left: 4px;
+      content: '';
+      display: block;
+      width: 24px;
+      height: 24px;
+      border-radius: 50%;
+      background-color: #275efe;
+      transition: .3s;
+      cursor: pointer;
+    }
+    input:checked + .line span::before {
+      left: 32px;
+    }
+  </style>
+</head>
+<body>
+  <label class="switch">
+    <input type="checkbox">
+    <div class="line">
+      <span></span>
+    </div>
+  </label>
+</body>
+</html>
